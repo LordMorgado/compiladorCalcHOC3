@@ -1,0 +1,553 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> declaracion
+Rule 1     declaracion -> IDENTIFICADOR ASIGNAR expresion
+Rule 2     declaracion -> expresion
+Rule 3     expresion -> expresion SUMA expresion
+Rule 4     expresion -> expresion RESTA expresion
+Rule 5     expresion -> expresion MULT expresion
+Rule 6     expresion -> expresion DIV expresion
+Rule 7     expresion -> expresion POTENCIA expresion
+Rule 8     expresion -> FUNCTION PARIZQ expresion PARDER
+Rule 9     expresion -> RESTA expresion
+Rule 10    expresion -> PARIZQ expresion PARDER
+Rule 11    expresion -> NUMERO
+Rule 12    expresion -> IDENTIFICADOR
+
+Terminals, with rules where they appear
+
+ASIGNAR              : 1
+DIV                  : 6
+FUNCTION             : 8
+IDENTIFICADOR        : 1 12
+MULT                 : 5
+NUMERO               : 11
+PARDER               : 8 10
+PARIZQ               : 8 10
+POTENCIA             : 7
+RESTA                : 4 9
+SUMA                 : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+declaracion          : 0
+expresion            : 1 2 3 3 4 4 5 5 6 6 7 7 8 9 10
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . declaracion
+    (1) declaracion -> . IDENTIFICADOR ASIGNAR expresion
+    (2) declaracion -> . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    IDENTIFICADOR   shift and go to state 2
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+
+    declaracion                    shift and go to state 1
+    expresion                      shift and go to state 3
+
+state 1
+
+    (0) S' -> declaracion .
+
+
+
+state 2
+
+    (1) declaracion -> IDENTIFICADOR . ASIGNAR expresion
+    (12) expresion -> IDENTIFICADOR .
+
+    ASIGNAR         shift and go to state 8
+    SUMA            reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    RESTA           reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    MULT            reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    DIV             reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    POTENCIA        reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    $end            reduce using rule 12 (expresion -> IDENTIFICADOR .)
+
+
+state 3
+
+    (2) declaracion -> expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    $end            reduce using rule 2 (declaracion -> expresion .)
+    SUMA            shift and go to state 9
+    RESTA           shift and go to state 10
+    MULT            shift and go to state 11
+    DIV             shift and go to state 12
+    POTENCIA        shift and go to state 13
+
+
+state 4
+
+    (9) expresion -> RESTA . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 14
+
+state 5
+
+    (8) expresion -> FUNCTION . PARIZQ expresion PARDER
+
+    PARIZQ          shift and go to state 16
+
+
+state 6
+
+    (10) expresion -> PARIZQ . expresion PARDER
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 17
+
+state 7
+
+    (11) expresion -> NUMERO .
+
+    SUMA            reduce using rule 11 (expresion -> NUMERO .)
+    RESTA           reduce using rule 11 (expresion -> NUMERO .)
+    MULT            reduce using rule 11 (expresion -> NUMERO .)
+    DIV             reduce using rule 11 (expresion -> NUMERO .)
+    POTENCIA        reduce using rule 11 (expresion -> NUMERO .)
+    $end            reduce using rule 11 (expresion -> NUMERO .)
+    PARDER          reduce using rule 11 (expresion -> NUMERO .)
+
+
+state 8
+
+    (1) declaracion -> IDENTIFICADOR ASIGNAR . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 18
+
+state 9
+
+    (3) expresion -> expresion SUMA . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 19
+
+state 10
+
+    (4) expresion -> expresion RESTA . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 20
+
+state 11
+
+    (5) expresion -> expresion MULT . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 21
+
+state 12
+
+    (6) expresion -> expresion DIV . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 22
+
+state 13
+
+    (7) expresion -> expresion POTENCIA . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 23
+
+state 14
+
+    (9) expresion -> RESTA expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    SUMA            reduce using rule 9 (expresion -> RESTA expresion .)
+    RESTA           reduce using rule 9 (expresion -> RESTA expresion .)
+    MULT            reduce using rule 9 (expresion -> RESTA expresion .)
+    DIV             reduce using rule 9 (expresion -> RESTA expresion .)
+    $end            reduce using rule 9 (expresion -> RESTA expresion .)
+    PARDER          reduce using rule 9 (expresion -> RESTA expresion .)
+    POTENCIA        shift and go to state 13
+
+  ! POTENCIA        [ reduce using rule 9 (expresion -> RESTA expresion .) ]
+  ! SUMA            [ shift and go to state 9 ]
+  ! RESTA           [ shift and go to state 10 ]
+  ! MULT            [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+
+
+state 15
+
+    (12) expresion -> IDENTIFICADOR .
+
+    SUMA            reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    RESTA           reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    MULT            reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    DIV             reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    POTENCIA        reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    $end            reduce using rule 12 (expresion -> IDENTIFICADOR .)
+    PARDER          reduce using rule 12 (expresion -> IDENTIFICADOR .)
+
+
+state 16
+
+    (8) expresion -> FUNCTION PARIZQ . expresion PARDER
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULT expresion
+    (6) expresion -> . expresion DIV expresion
+    (7) expresion -> . expresion POTENCIA expresion
+    (8) expresion -> . FUNCTION PARIZQ expresion PARDER
+    (9) expresion -> . RESTA expresion
+    (10) expresion -> . PARIZQ expresion PARDER
+    (11) expresion -> . NUMERO
+    (12) expresion -> . IDENTIFICADOR
+
+    FUNCTION        shift and go to state 5
+    RESTA           shift and go to state 4
+    PARIZQ          shift and go to state 6
+    NUMERO          shift and go to state 7
+    IDENTIFICADOR   shift and go to state 15
+
+    expresion                      shift and go to state 24
+
+state 17
+
+    (10) expresion -> PARIZQ expresion . PARDER
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    PARDER          shift and go to state 25
+    SUMA            shift and go to state 9
+    RESTA           shift and go to state 10
+    MULT            shift and go to state 11
+    DIV             shift and go to state 12
+    POTENCIA        shift and go to state 13
+
+
+state 18
+
+    (1) declaracion -> IDENTIFICADOR ASIGNAR expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    $end            reduce using rule 1 (declaracion -> IDENTIFICADOR ASIGNAR expresion .)
+    SUMA            shift and go to state 9
+    RESTA           shift and go to state 10
+    MULT            shift and go to state 11
+    DIV             shift and go to state 12
+    POTENCIA        shift and go to state 13
+
+
+state 19
+
+    (3) expresion -> expresion SUMA expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    SUMA            reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    RESTA           reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    $end            reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    PARDER          reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    MULT            shift and go to state 11
+    DIV             shift and go to state 12
+    POTENCIA        shift and go to state 13
+
+  ! MULT            [ reduce using rule 3 (expresion -> expresion SUMA expresion .) ]
+  ! DIV             [ reduce using rule 3 (expresion -> expresion SUMA expresion .) ]
+  ! POTENCIA        [ reduce using rule 3 (expresion -> expresion SUMA expresion .) ]
+  ! SUMA            [ shift and go to state 9 ]
+  ! RESTA           [ shift and go to state 10 ]
+
+
+state 20
+
+    (4) expresion -> expresion RESTA expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    SUMA            reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    RESTA           reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    $end            reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    PARDER          reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    MULT            shift and go to state 11
+    DIV             shift and go to state 12
+    POTENCIA        shift and go to state 13
+
+  ! MULT            [ reduce using rule 4 (expresion -> expresion RESTA expresion .) ]
+  ! DIV             [ reduce using rule 4 (expresion -> expresion RESTA expresion .) ]
+  ! POTENCIA        [ reduce using rule 4 (expresion -> expresion RESTA expresion .) ]
+  ! SUMA            [ shift and go to state 9 ]
+  ! RESTA           [ shift and go to state 10 ]
+
+
+state 21
+
+    (5) expresion -> expresion MULT expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    SUMA            reduce using rule 5 (expresion -> expresion MULT expresion .)
+    RESTA           reduce using rule 5 (expresion -> expresion MULT expresion .)
+    MULT            reduce using rule 5 (expresion -> expresion MULT expresion .)
+    DIV             reduce using rule 5 (expresion -> expresion MULT expresion .)
+    $end            reduce using rule 5 (expresion -> expresion MULT expresion .)
+    PARDER          reduce using rule 5 (expresion -> expresion MULT expresion .)
+    POTENCIA        shift and go to state 13
+
+  ! POTENCIA        [ reduce using rule 5 (expresion -> expresion MULT expresion .) ]
+  ! SUMA            [ shift and go to state 9 ]
+  ! RESTA           [ shift and go to state 10 ]
+  ! MULT            [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+
+
+state 22
+
+    (6) expresion -> expresion DIV expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    SUMA            reduce using rule 6 (expresion -> expresion DIV expresion .)
+    RESTA           reduce using rule 6 (expresion -> expresion DIV expresion .)
+    MULT            reduce using rule 6 (expresion -> expresion DIV expresion .)
+    DIV             reduce using rule 6 (expresion -> expresion DIV expresion .)
+    $end            reduce using rule 6 (expresion -> expresion DIV expresion .)
+    PARDER          reduce using rule 6 (expresion -> expresion DIV expresion .)
+    POTENCIA        shift and go to state 13
+
+  ! POTENCIA        [ reduce using rule 6 (expresion -> expresion DIV expresion .) ]
+  ! SUMA            [ shift and go to state 9 ]
+  ! RESTA           [ shift and go to state 10 ]
+  ! MULT            [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+
+
+state 23
+
+    (7) expresion -> expresion POTENCIA expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    SUMA            reduce using rule 7 (expresion -> expresion POTENCIA expresion .)
+    RESTA           reduce using rule 7 (expresion -> expresion POTENCIA expresion .)
+    MULT            reduce using rule 7 (expresion -> expresion POTENCIA expresion .)
+    DIV             reduce using rule 7 (expresion -> expresion POTENCIA expresion .)
+    $end            reduce using rule 7 (expresion -> expresion POTENCIA expresion .)
+    PARDER          reduce using rule 7 (expresion -> expresion POTENCIA expresion .)
+    POTENCIA        shift and go to state 13
+
+  ! POTENCIA        [ reduce using rule 7 (expresion -> expresion POTENCIA expresion .) ]
+  ! SUMA            [ shift and go to state 9 ]
+  ! RESTA           [ shift and go to state 10 ]
+  ! MULT            [ shift and go to state 11 ]
+  ! DIV             [ shift and go to state 12 ]
+
+
+state 24
+
+    (8) expresion -> FUNCTION PARIZQ expresion . PARDER
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULT expresion
+    (6) expresion -> expresion . DIV expresion
+    (7) expresion -> expresion . POTENCIA expresion
+
+    PARDER          shift and go to state 26
+    SUMA            shift and go to state 9
+    RESTA           shift and go to state 10
+    MULT            shift and go to state 11
+    DIV             shift and go to state 12
+    POTENCIA        shift and go to state 13
+
+
+state 25
+
+    (10) expresion -> PARIZQ expresion PARDER .
+
+    SUMA            reduce using rule 10 (expresion -> PARIZQ expresion PARDER .)
+    RESTA           reduce using rule 10 (expresion -> PARIZQ expresion PARDER .)
+    MULT            reduce using rule 10 (expresion -> PARIZQ expresion PARDER .)
+    DIV             reduce using rule 10 (expresion -> PARIZQ expresion PARDER .)
+    POTENCIA        reduce using rule 10 (expresion -> PARIZQ expresion PARDER .)
+    $end            reduce using rule 10 (expresion -> PARIZQ expresion PARDER .)
+    PARDER          reduce using rule 10 (expresion -> PARIZQ expresion PARDER .)
+
+
+state 26
+
+    (8) expresion -> FUNCTION PARIZQ expresion PARDER .
+
+    SUMA            reduce using rule 8 (expresion -> FUNCTION PARIZQ expresion PARDER .)
+    RESTA           reduce using rule 8 (expresion -> FUNCTION PARIZQ expresion PARDER .)
+    MULT            reduce using rule 8 (expresion -> FUNCTION PARIZQ expresion PARDER .)
+    DIV             reduce using rule 8 (expresion -> FUNCTION PARIZQ expresion PARDER .)
+    POTENCIA        reduce using rule 8 (expresion -> FUNCTION PARIZQ expresion PARDER .)
+    $end            reduce using rule 8 (expresion -> FUNCTION PARIZQ expresion PARDER .)
+    PARDER          reduce using rule 8 (expresion -> FUNCTION PARIZQ expresion PARDER .)
+
